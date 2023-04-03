@@ -40,7 +40,7 @@ public class AnimatedSierpinskiTriangle extends JPanel {
         }
     }
 
-    private void divideTriangle(Point[] points, int depth) {
+    void divideTriangle(Point[] points, int depth) {
         if (depth < MAX_DEPTH) {
             Point p1 = midpoint(points[0], points[1]);
             Point p2 = midpoint(points[1], points[2]);
@@ -64,7 +64,7 @@ public class AnimatedSierpinskiTriangle extends JPanel {
         }
     }
 
-    private Point[] getRandomPoints() {
+    Point[] getRandomPoints() {
         Random rand = new Random();
         Point[] points = new Point[3];
         int width = getWidth();
@@ -89,10 +89,13 @@ public class AnimatedSierpinskiTriangle extends JPanel {
     }
 
 
-    private Point midpoint(Point p1, Point p2) {
+    Point midpoint(Point p1, Point p2) {
         int x = (int) ((p1.getX() + p2.getX()) / 2);
         int y = (int) ((p1.getY() + p2.getY()) / 2);
         return new Point(x, y);
     }
 
+    public ArrayList<Point[]> getTriangles() {
+        return null;
+    }
 }
