@@ -77,8 +77,8 @@ public class AnimatedSierpinskiTriangle extends JPanel {
                 points[i] = new Point(x, y);
             }
         } else {
-            // Если значения ширины или высоты панели равны нулю,
-            // то генерируются случайные координаты от 0 до 600
+            // If the panel's width or height values are zero,
+            // then random coordinates are generated from 0 to 600
             for (int i = 0; i < 3; i++) {
                 int x = rand.nextInt(600);
                 int y = rand.nextInt(600);
@@ -98,4 +98,5 @@ public class AnimatedSierpinskiTriangle extends JPanel {
     public ArrayList<Point[]> getTriangles() {
         return null;
     }
+
 }
