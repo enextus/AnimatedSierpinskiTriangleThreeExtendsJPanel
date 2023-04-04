@@ -68,6 +68,10 @@ public class AnimatedSierpinskiTriangle extends JPanel {
         }
     }
 
+    public ArrayList<Point[]> getTriangles() {
+        return triangles;
+    }
+
     Point[] getRandomPoints() {
         Random rand = new Random();
         Point[] points = new Point[3];
