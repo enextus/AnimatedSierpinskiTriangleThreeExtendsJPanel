@@ -68,7 +68,7 @@ public class OptimizedSierpinskiTriangle extends JPanel {
         return points;
     }
 
-    private Point midpoint(Point p1, Point p2) {
+    Point midpoint(Point p1, Point p2) {
         int x = (int) ((p1.getX() + p2.getX()) / 2);
         int y = (int) ((p1.getY() + p2.getY()) / 2);
         return new Point(x, y);
