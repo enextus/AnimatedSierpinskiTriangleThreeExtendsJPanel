@@ -1,51 +1,32 @@
 package org.serpinskitriangle;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.*;
 import java.awt.Point;
-import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class AnimatedSierpinskiTriangleThreeTest {
-    private AnimatedSierpinskiTriangleThree triangle;
-
-    @BeforeEach
-    void setUp() {
-        triangle = new AnimatedSierpinskiTriangleThree();
-        JFrame frame = new JFrame("Test Frame");
-    }
+public class AnimatedSierpinskiTriangleThreeTest {
 
     @Test
-    void testGetTriangles() {
-        ArrayList<Point[]> triangles = triangle.getTriangles();
-        assertNotNull(triangles);
-        assertTrue(triangles.isEmpty());
-    }
-
-    @Test
-    void testMidpoint() {
+    public void testMidpoint() {
+        AnimatedSierpinskiTriangleThree triangle = new AnimatedSierpinskiTriangleThree();
         Point p1 = new Point(0, 0);
         Point p2 = new Point(10, 10);
-        Point expectedMidpoint = new Point(5, 5);
-        Point actualMidpoint = triangle.midpoint(p1, p2);
-        assertEquals(expectedMidpoint, actualMidpoint, "Midpoint calculation is incorrect");
+        Point midpoint = triangle.midpoint(p1, p2);
+        assertEquals(5, midpoint.x);
+        assertEquals(5, midpoint.y);
     }
 
     @Test
-    void testGetRandomPoints() {
-        int width = 600;
-        int height = 600;
-        Point[] randomPoints = triangle.getRandomPoints(width, height);
-
-        assertNotNull(randomPoints);
-        assertEquals(3, randomPoints.length);
-
-        for (Point point : randomPoints) {
-            assertTrue(point.getX() >= 0 && point.getX() < width);
-            assertTrue(point.getY() >= 0 && point.getY() < height);
-        }
+    public void testGetInitialTriangle() {
+        AnimatedSierpinskiTriangleThree triangle = new AnimatedSierpinskiTriangleThree();
+        Point[] initialTriangle = triangle.getInitialTriangle(600, 600);
+        assertNotNull(initialTriangle);
+        assertEquals(3, initialTriangle.length);
+        assertEquals(new Point(300, 0), initialTriangle[0]);
+        assertEquals(new Point(0, 600), initialTriangle[1]);
+        assertEquals(new Point(600, 600), initialTriangle[2]);
     }
 }
