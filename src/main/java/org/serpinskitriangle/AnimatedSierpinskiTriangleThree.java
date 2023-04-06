@@ -14,10 +14,10 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
     private JLabel countLabel = new JLabel("Triangles: 1");
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Animated Sierpinski Triangle Two");
+        JFrame frame = new JFrame("Animated Sierpinski Triangle Three");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 600);
-        AnimatedSierpinskiTriangleTwo contentPane = new AnimatedSierpinskiTriangleTwo();
+        AnimatedSierpinskiTriangleThree contentPane = new AnimatedSierpinskiTriangleThree();
         frame.setContentPane(contentPane);
         frame.setVisible(true);
         contentPane.generateTriangles();
@@ -25,9 +25,10 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 
     public AnimatedSierpinskiTriangleThree() {
         setPreferredSize(new Dimension(990, 990));
+        setLayout(null); // Disable the layout manager so we can place components manually
         add(countLabel);
+        countLabel.setBounds(getWidth() / 2 - 40, getHeight() - 40, 100, 20); // Set the label location
     }
-
 
     public void generateTriangles() {
         Point[] points = getInitialTriangle(getWidth(), getHeight());
@@ -75,6 +76,14 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
         return triangles;
     }
 
+    /**
+     * Метод, который генерирует начальный равносторонний треугольник,
+     * который занимает большую часть панели.
+     *
+     * @param width  ширина панели
+     * @param height высота панели
+     * @return массив точек, представляющих начальный треугольник
+     */
     Point[] getInitialTriangle(int width, int height) {
         Point[] points = new Point[3];
         points[0] = new Point(width / 2, 0);
@@ -83,6 +92,13 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
         return points;
     }
 
+    /**
+     * Метод, который генерирует массив из трех случайных точек в пределах границ панели.
+     *
+     * @param width  ширина панели
+     * @param height высота панели
+     * @return массив точек, представляющих случайный треугольник
+     */
     Point[] getRandomPoints(int width, int height) {
         Point[] points = new Point[3];
         Random rand = new Random();
@@ -94,9 +110,34 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
         return points;
     }
 
+    /**
+     * Метод, который вычисляет и возвращает середину между двумя точками.
+     *
+     * @param p1 первая точка
+     * @param p2 вторая точка
+     * @return точка, представляющая середину между двумя точками
+     */
     Point midpoint(Point p1, Point p2) {
         int x = (int) ((p1.getX() + p2.getX()) / 2);
         int y = (int) ((p1.getY() + p2.getY()) / 2);
         return new Point(x, y);
+    }
+
+    /**
+     * Метод, который возвращает countLabel.
+     *
+     * @return JLabel, представляющий countLabel
+     */
+    public JLabel getTriangleCountLabel() {
+        return countLabel;
+    }
+
+    /**
+     * Метод, который возвращает текущее количество треугольников.
+     *
+     * @return текущее количество треугольников
+     */
+    public int getTriangleCount() {
+        return triangleCount;
     }
 }
