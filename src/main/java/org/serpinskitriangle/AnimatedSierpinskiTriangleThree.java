@@ -3,12 +3,15 @@ package org.serpinskitriangle;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class AnimatedSierpinskiTriangleThree extends JPanel {
 
     private static final int MAX_DEPTH = 6;
     private static final Color[] COLOR_MAP = {Color.BLUE, Color.RED, Color.GREEN, Color.WHITE, Color.YELLOW, Color.MAGENTA, Color.ORANGE};
+    private static final int DELAY = 500;
+    private static final int WIDTH = 600;
+    private static final int HEIGHT = 600;
+
     private ArrayList<Point[]> triangles = new ArrayList<>();
     private int triangleCount = 1;
     private JLabel countLabel = new JLabel("Triangles: 1");
@@ -16,7 +19,7 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Animated Sierpinski Triangle Three");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 600);
+        frame.setSize(WIDTH, HEIGHT);
         AnimatedSierpinskiTriangleThree contentPane = new AnimatedSierpinskiTriangleThree();
         frame.setContentPane(contentPane);
         frame.setVisible(true);
@@ -24,14 +27,13 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
     }
 
     public AnimatedSierpinskiTriangleThree() {
-        setPreferredSize(new Dimension(990, 990));
-        setLayout(null); // Disable the layout manager so we can place components manually
-        add(countLabel);
-        countLabel.setBounds(getWidth() / 2 - 40, getHeight() - 40, 100, 20); // Set the label location
+        setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        setLayout(new BorderLayout());
+        add(countLabel, BorderLayout.SOUTH);
     }
 
     public void generateTriangles() {
-        Point[] points = getInitialTriangle(getWidth(), getHeight());
+        Point[] points = getInitialTriangle(WIDTH, HEIGHT);
         triangles.add(points);
         divideTriangle(points, 0);
     }
@@ -62,7 +64,7 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
             countLabel.setText("Triangles: " + triangleCount);
             repaint();
             try {
-                Thread.sleep(500);
+                Thread.sleep(DELAY);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -72,18 +74,6 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
         }
     }
 
-    public ArrayList<Point[]> getTriangles() {
-        return triangles;
-    }
-
-    /**
-     * Метод, который генерирует начальный равносторонний треугольник,
-     * который занимает большую часть панели.
-     *
-     * @param width  ширина панели
-     * @param height высота панели
-     * @return массив точек, представляющих начальный треугольник
-     */
     Point[] getInitialTriangle(int width, int height) {
         Point[] points = new Point[3];
         points[0] = new Point(width / 2, 0);
@@ -92,52 +82,9 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
         return points;
     }
 
-    /**
-     * Метод, который генерирует массив из трех случайных точек в пределах границ панели.
-     *
-     * @param width  ширина панели
-     * @param height высота панели
-     * @return массив точек, представляющих случайный треугольник
-     */
-    Point[] getRandomPoints(int width, int height) {
-        Point[] points = new Point[3];
-        Random rand = new Random();
-        for (int i = 0; i < 3; i++) {
-            int x = rand.nextInt(width);
-            int y = rand.nextInt(height);
-            points[i] = new Point(x, y);
-        }
-        return points;
-    }
-
-    /**
-     * Метод, который вычисляет и возвращает середину между двумя точками.
-     *
-     * @param p1 первая точка
-     * @param p2 вторая точка
-     * @return точка, представляющая середину между двумя точками
-     */
     Point midpoint(Point p1, Point p2) {
         int x = (int) ((p1.getX() + p2.getX()) / 2);
         int y = (int) ((p1.getY() + p2.getY()) / 2);
         return new Point(x, y);
-    }
-
-    /**
-     * Метод, который возвращает countLabel.
-     *
-     * @return JLabel, представляющий countLabel
-     */
-    public JLabel getTriangleCountLabel() {
-        return countLabel;
-    }
-
-    /**
-     * Метод, который возвращает текущее количество треугольников.
-     *
-     * @return текущее количество треугольников
-     */
-    public int getTriangleCount() {
-        return triangleCount;
     }
 }
