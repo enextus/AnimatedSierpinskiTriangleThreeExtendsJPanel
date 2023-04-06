@@ -13,6 +13,7 @@
         <maven.compiler.target>20</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
+
     </properties>
 
     <dependencies>
@@ -67,7 +68,10 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>org.serpinskitriangle.AnimatedSierpinskiTriangle</mainClass>
+<!--                            <mainClass>org.serpinskitriangle.AnimatedSierpinskiTriangle</mainClass>-->
+                            <mainClass>org.serpinskitriangle.OptimizedSierpinskiTriangle</mainClass>
+<!--                            <mainClass>org.serpinskitriangle.RandomSierpinskiTriangle</mainClass>-->
+<!--                            <mainClass>org.serpinskitriangle.SierpinskiTriangle</mainClass>-->
                         </manifest>
                     </archive>
                 </configuration>
