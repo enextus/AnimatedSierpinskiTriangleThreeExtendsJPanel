@@ -5,25 +5,27 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class AnimatedSierpinskiTriangleTwo extends JPanel {
+public class AnimatedSierpinskiTriangleThree extends JPanel {
 
     private static final int MAX_DEPTH = 6;
     private static final Color[] COLOR_MAP = {Color.BLUE, Color.RED, Color.GREEN, Color.WHITE, Color.YELLOW, Color.MAGENTA, Color.ORANGE};
-
     private ArrayList<Point[]> triangles = new ArrayList<>();
+    private int triangleCount = 1;
+    private JLabel countLabel = new JLabel("Triangles: 1");
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Animated Sierpinski Triangle Two");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(900, 900);
+        frame.setSize(600, 600);
         AnimatedSierpinskiTriangleTwo contentPane = new AnimatedSierpinskiTriangleTwo();
         frame.setContentPane(contentPane);
         frame.setVisible(true);
         contentPane.generateTriangles();
     }
 
-    public AnimatedSierpinskiTriangleTwo() {
-        setPreferredSize(new Dimension(600, 600));
+    public AnimatedSierpinskiTriangleThree() {
+        setPreferredSize(new Dimension(990, 990));
+        add(countLabel);
     }
 
 
@@ -55,6 +57,8 @@ public class AnimatedSierpinskiTriangleTwo extends JPanel {
             triangles.add(triangle1);
             triangles.add(triangle2);
             triangles.add(triangle3);
+            triangleCount += 3;
+            countLabel.setText("Triangles: " + triangleCount);
             repaint();
             try {
                 Thread.sleep(500);
@@ -67,23 +71,21 @@ public class AnimatedSierpinskiTriangleTwo extends JPanel {
         }
     }
 
-
     public ArrayList<Point[]> getTriangles() {
         return triangles;
     }
 
-
     Point[] getInitialTriangle(int width, int height) {
         Point[] points = new Point[3];
-        points[0] = new Point(width / 2, height / 2 - height / 4);
-        points[1] = new Point(width / 4, height / 2 + height / 4);
-        points[2] = new Point(3 * width / 4, height / 2 + height / 4);
+        points[0] = new Point(width / 2, 0);
+        points[1] = new Point(0, height);
+        points[2] = new Point(width, height);
         return points;
     }
 
     Point[] getRandomPoints(int width, int height) {
-        Random rand = new Random();
         Point[] points = new Point[3];
+        Random rand = new Random();
         for (int i = 0; i < 3; i++) {
             int x = rand.nextInt(width);
             int y = rand.nextInt(height);
@@ -97,5 +99,4 @@ public class AnimatedSierpinskiTriangleTwo extends JPanel {
         int y = (int) ((p1.getY() + p2.getY()) / 2);
         return new Point(x, y);
     }
-
 }
