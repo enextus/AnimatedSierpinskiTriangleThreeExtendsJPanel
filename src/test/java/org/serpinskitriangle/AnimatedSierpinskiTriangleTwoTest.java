@@ -8,12 +8,12 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AnimatedSierpinskiTriangleTest {
-    private AnimatedSierpinskiTriangle triangle;
+class AnimatedSierpinskiTriangleTwoTest {
+    private AnimatedSierpinskiTriangleTwo triangle;
 
     @BeforeEach
     void setUp() {
-        triangle = new AnimatedSierpinskiTriangle();
+        triangle = new AnimatedSierpinskiTriangleTwo();
     }
 
     @Test
@@ -27,16 +27,9 @@ class AnimatedSierpinskiTriangleTest {
 
     @Test
     void testGetRandomPoints() {
-        Point[] randomPoints = triangle.getRandomPoints();
+        Point[] randomPoints = triangle.getRandomPoints(100,100);
         assertNotNull(randomPoints, "Random points array should not be null");
         assertEquals(3, randomPoints.length, "Random points array should have a length of 3");
     }
 
-    @Test
-    void testGenerateTriangles() {
-        triangle.generateTriangles();
-        ArrayList<Point[]> triangles = triangle.getTriangles();
-        assertNotNull(triangles, "Triangles list should not be null");
-        assertTrue(triangles.size() > 0, "Triangles list should not be empty");
-    }
 }

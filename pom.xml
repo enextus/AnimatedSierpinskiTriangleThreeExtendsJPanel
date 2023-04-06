@@ -71,7 +71,8 @@
 <!--                            <mainClass>org.serpinskitriangle.AnimatedSierpinskiTriangle</mainClass>-->
 <!--                            <mainClass>org.serpinskitriangle.OptimizedSierpinskiTriangle</mainClass>-->
 <!--                            <mainClass>org.serpinskitriangle.RandomSierpinskiTriangle</mainClass>-->
-                            <mainClass>org.serpinskitriangle.SierpinskiTriangle</mainClass>
+<!--                            <mainClass>org.serpinskitriangle.SierpinskiTriangle</mainClass>-->
+                            <mainClass>org.serpinskitriangle.AnimatedSierpinskiTriangleTwo</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
