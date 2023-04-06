@@ -87,4 +87,5 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
         int y = (int) ((p1.getY() + p2.getY()) / 2);
         return new Point(x, y);
     }
+
 }
