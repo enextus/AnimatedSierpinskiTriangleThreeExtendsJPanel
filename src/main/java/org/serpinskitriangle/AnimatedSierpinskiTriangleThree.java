@@ -11,6 +11,7 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
     private static final Color[] COLOR_MAP = {Color.BLUE, Color.RED, Color.GREEN, Color.WHITE, Color.YELLOW, Color.MAGENTA, Color.ORANGE};
     private static final Color[] COLOR_MAP_TWO = {Color.BLACK};
     private static final int DELAY = 700;
+    private static final int DELAY_SHORT = 200;
     private static final int WIDTH = 1000;
     private static final int HEIGHT = 1000;
     private static final int FONT_SIZE = 22;
@@ -44,11 +45,11 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 
     public void generateTriangles() {
         Point[] points = getInitialTriangle(WIDTH, HEIGHT);
-        System.out.println("points[0: " + points[0].toString());
-        System.out.println("X: " + points[0].getX() + ", Y: " + points[0].getY());
+/*        System.out.println("points[0: " + points[0].toString());
+        System.out.println("X: " + points[0].getX() + ", Y: " + points[0].getY());*/
         triangles.add(points);
 
-        System.out.println("1.triangles: " + triangles);
+//        System.out.println("1.triangles: " + triangles);
 
         /*
         size(): 1
@@ -105,22 +106,35 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
             Point[] triangle1 = {points[0], p1, p3};
             Point[] triangle2 = {p1, points[1], p2};
             Point[] triangle3 = {p3, p2, points[2]};
+
+            // add new triangle in the frame
             triangles.add(triangle1);
+
+            takeDelay(DELAY_SHORT);
+
             triangles.add(triangle2);
+
+            takeDelay(DELAY_SHORT);
+
             triangles.add(triangle3);
+
             triangleCount += 3;
             countLabel.setText("Triangles: " + triangleCount);
             repaint();
 
-            try {
-                Thread.sleep(DELAY);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            takeDelay(DELAY);
 
             divideTriangle(triangle1, depth + 1);
             divideTriangle(triangle2, depth + 1);
             divideTriangle(triangle3, depth + 1);
+        }
+    }
+
+    private static void takeDelay(int delayShort) {
+        try {
+            Thread.sleep(delayShort);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
