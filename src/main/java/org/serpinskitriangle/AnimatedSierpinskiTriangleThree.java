@@ -10,7 +10,6 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
     private static final Color[] COLOR_MAP = {Color.BLUE, Color.RED, Color.GREEN, Color.WHITE, Color.YELLOW, Color.MAGENTA, Color.ORANGE};
     private static final Color[] COLOR_MAP_TWO = {Color.BLACK};
     private static final int DELAY = 700;
-
     private static final int WIDTH = 1000;
     private static final int HEIGHT = 1000;
     private static final int FONT_SIZE = 22;
@@ -29,9 +28,9 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
     }
 
     public AnimatedSierpinskiTriangleThree() {
-        Font currentFont = countLabel.getFont(); // Получите текущий шрифт
+        Font currentFont = countLabel.getFont(); // Get the current font
         Font newFont = currentFont.deriveFont((float) FONT_SIZE); // Создайте новый шрифт на основе текущего шрифта с новым размером
-        countLabel.setFont(newFont); // Установите новый шрифт для countLabel
+        countLabel.setFont(newFont); // Set the new font for countLabel
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setLayout(new BorderLayout());
 //        add(countLabel, BorderLayout.SOUTH);
@@ -59,10 +58,9 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        int dotRadius = 4; // Радиус жирной точки (вы можете настроить это значение)
+        int dotRadius = 4; // Radius of the bold dot (you can adjust this value)
 
         for (int i = 0; i < triangles.size(); i++) {
-
             g.setColor(COLOR_MAP_TWO[i % COLOR_MAP_TWO.length]);
 
             for (Point point : triangles.get(i)) {
@@ -72,7 +70,6 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
             }
 
             g.setColor(COLOR_MAP[i % COLOR_MAP.length]);
-
             int[] x = {(int) triangles.get(i)[0].getX(), (int) triangles.get(i)[1].getX(), (int) triangles.get(i)[2].getX()};
             int[] y = {(int) triangles.get(i)[0].getY(), (int) triangles.get(i)[1].getY(), (int) triangles.get(i)[2].getY()};
             g.fillPolygon(x, y, 3);
@@ -93,11 +90,13 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
             triangleCount += 3;
             countLabel.setText("Triangles: " + triangleCount);
             repaint();
+
             try {
                 Thread.sleep(DELAY);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
             divideTriangle(triangle1, depth + 1);
             divideTriangle(triangle2, depth + 1);
             divideTriangle(triangle3, depth + 1);
