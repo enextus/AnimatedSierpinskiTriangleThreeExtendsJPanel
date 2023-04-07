@@ -3,6 +3,7 @@ package org.serpinskitriangle;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AnimatedSierpinskiTriangleThree extends JPanel {
 
@@ -18,13 +19,18 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
     private final JLabel countLabel = new JLabel("Triangles: 1");
 
     public static void main(String[] args) {
+
         JFrame frame = new JFrame("Animated Sierpinski Triangle Three");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(WIDTH, HEIGHT);
         AnimatedSierpinskiTriangleThree contentPane = new AnimatedSierpinskiTriangleThree();
         frame.setContentPane(contentPane);
         frame.setVisible(true);
+
+        System.out.println("2.contentPane: " + contentPane);
+
         contentPane.generateTriangles();
+
     }
 
     public AnimatedSierpinskiTriangleThree() {
@@ -33,13 +39,28 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
         countLabel.setFont(newFont); // Set the new font for countLabel
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setLayout(new BorderLayout());
-//        add(countLabel, BorderLayout.SOUTH);
         add(countLabel, BorderLayout.NORTH);
     }
 
     public void generateTriangles() {
         Point[] points = getInitialTriangle(WIDTH, HEIGHT);
+        System.out.println("points[0: " + points[0].toString());
+        System.out.println("X: " + points[0].getX() + ", Y: " + points[0].getY());
         triangles.add(points);
+
+        System.out.println("1.triangles: " + triangles);
+
+        /*
+        size(): 1
+        getClass(): class java.util.ArrayList
+        triangles.get(0): [java.awt.Point[x=500,y=0], java.awt.Point[x=0,y=1000], java.awt.Point[x=1000,y=1000]]
+         */
+/*        for (Point[] tr : triangles) {
+            System.out.println("size(): " + triangles.size());
+            System.out.println("getClass(): " + triangles.getClass());
+            System.out.println("triangles.get(0): " + Arrays.toString(triangles.get(0)));
+        }*/
+
         divideTriangle(points, 0);
     }
 
