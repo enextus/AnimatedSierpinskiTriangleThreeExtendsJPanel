@@ -7,12 +7,13 @@ import java.util.ArrayList;
 public class AnimatedSierpinskiTriangleThree extends JPanel {
 
     private static final int MAX_DEPTH = 6;
-//    private static final Color[] COLOR_MAP = {Color.BLUE, Color.RED, Color.GREEN, Color.WHITE, Color.YELLOW, Color.MAGENTA, Color.ORANGE};
-    private static final Color[] COLOR_MAP = {Color.BLACK,};
+    private static final Color[] COLOR_MAP = {Color.BLUE, Color.RED, Color.GREEN, Color.WHITE, Color.YELLOW, Color.MAGENTA, Color.ORANGE};
+    private static final Color[] COLOR_MAP_TWO = {Color.BLACK};
     private static final int DELAY = 700;
-    private static final int WIDTH = 1100;
-    private static final int HEIGHT = 1100;
 
+    private static final int WIDTH = 1000;
+    private static final int HEIGHT = 1000;
+    private static final int FONT_SIZE = 22;
     private final ArrayList<Point[]> triangles = new ArrayList<>();
     private int triangleCount = 1;
     private final JLabel countLabel = new JLabel("Triangles: 1");
@@ -28,9 +29,8 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
     }
 
     public AnimatedSierpinskiTriangleThree() {
-        int newFontSize = 24; // Задайте новый размер шрифта
         Font currentFont = countLabel.getFont(); // Получите текущий шрифт
-        Font newFont = currentFont.deriveFont((float) newFontSize); // Создайте новый шрифт на основе текущего шрифта с новым размером
+        Font newFont = currentFont.deriveFont((float) FONT_SIZE); // Создайте новый шрифт на основе текущего шрифта с новым размером
         countLabel.setFont(newFont); // Установите новый шрифт для countLabel
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setLayout(new BorderLayout());
@@ -62,15 +62,22 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
         int dotRadius = 4; // Радиус жирной точки (вы можете настроить это значение)
 
         for (int i = 0; i < triangles.size(); i++) {
-            g.setColor(COLOR_MAP[i % COLOR_MAP.length]);
+
+            g.setColor(COLOR_MAP_TWO[i % COLOR_MAP_TWO.length]);
+
             for (Point point : triangles.get(i)) {
                 int x = (int) point.getX() - dotRadius / 2;
                 int y = (int) point.getY() - dotRadius / 2;
                 g.fillOval(x, y, dotRadius, dotRadius);
             }
+
+            g.setColor(COLOR_MAP[i % COLOR_MAP.length]);
+
+            int[] x = {(int) triangles.get(i)[0].getX(), (int) triangles.get(i)[1].getX(), (int) triangles.get(i)[2].getX()};
+            int[] y = {(int) triangles.get(i)[0].getY(), (int) triangles.get(i)[1].getY(), (int) triangles.get(i)[2].getY()};
+            g.fillPolygon(x, y, 3);
         }
     }
-
 
     void divideTriangle(Point[] points, int depth) {
         if (depth < MAX_DEPTH) {
