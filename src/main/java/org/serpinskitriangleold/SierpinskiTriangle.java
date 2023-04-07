@@ -1,4 +1,4 @@
-package org.serpinskitriangle;
+package org.serpinskitriangleold;
 
 import java.awt.Color;
 import java.awt.Graphics;
