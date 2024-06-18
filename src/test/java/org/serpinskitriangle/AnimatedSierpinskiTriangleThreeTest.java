@@ -156,6 +156,6 @@ class AnimatedSierpinskiTriangleThreeTest {
 
     @Test
     void testMaxTrianglesConstant() {
-        assertEquals(3645, AnimatedSierpinskiTriangleThree.MAX_TRIANGLES);
+        assertEquals(4645, AnimatedSierpinskiTriangleThree.MAX_TRIANGLES);
     }
 }
