@@ -7,10 +7,10 @@ import java.util.ArrayList;
 public class AnimatedSierpinskiTriangleThree extends JPanel {
 
 	protected static final int MAX_DEPTH = 6;
-	protected static final int MAX_TRIANGLES = 4645;
+	protected static final int MAX_TRIANGLES = 8645;
 	protected static final Color[] COLOR_MAP = {Color.BLUE, Color.RED, Color.GREEN, Color.WHITE, Color.YELLOW, Color.MAGENTA, Color.ORANGE};
 	protected static final Color[] COLOR_MAP_TWO = {Color.BLACK};
-	protected static final int DELAY = 700;
+	protected static final int DELAY = 100;
 	protected static final int WIDTH = 1000;
 	protected static final int HEIGHT = 1000;
 	protected static final int FONT_SIZE = 22;
