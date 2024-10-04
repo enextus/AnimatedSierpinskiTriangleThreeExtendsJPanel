@@ -6,16 +6,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.serpinskitriangle</groupId>
-    <artifactId>Serpinski_Triangle_23</artifactId>
+    <artifactId>AnimatedSierpinskiTriangleThree</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>20</maven.compiler.source>
         <maven.compiler.target>20</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <junit-jupiter.version>5.9.2</junit-jupiter.version>
-        <jetbrains.version>24.0.1</jetbrains.version>
-        <mockito-junit-jupiter.version>5.2.0</mockito-junit-jupiter.version>
+        <junit-jupiter.version>5.10.3</junit-jupiter.version>
+        <jetbrains.version>24.1.0</jetbrains.version>
+        <mockito-junit-jupiter.version>5.12.0</mockito-junit-jupiter.version>
     </properties>
 
     <dependencies>
@@ -57,5 +57,12 @@
             </plugin>
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <id>maven_central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2/</url>
+        </repository>
+    </repositories>
 
 </project>
