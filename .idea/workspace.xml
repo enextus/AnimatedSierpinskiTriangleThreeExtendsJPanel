@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28135546-0887-4e9e-9140-d46afd864477" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/serpinskitriangle/AnimatedSierpinskiTriangleThree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/serpinskitriangle/AnimatedSierpinskiTriangleThree.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,6 +217,7 @@
       <workItem from="1732016794523" duration="952000" />
       <workItem from="1732017768435" duration="536000" />
       <workItem from="1732019397409" duration="58000" />
+      <workItem from="1732019557423" duration="132000" />
     </task>
     <servers />
   </component>
