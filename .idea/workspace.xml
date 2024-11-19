@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28135546-0887-4e9e-9140-d46afd864477" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/serpinskitriangle/AnimatedSierpinskiTriangleThree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/serpinskitriangle/AnimatedSierpinskiTriangleThree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/serpinskitriangle/AnimatedSierpinskiTriangleThree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/serpinskitriangle/AnimatedSierpinskiTriangleThreeTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/serpinskitriangle/AnimatedSierpinskiTriangleThree.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +21,13 @@
         <projects_view />
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,7 +52,10 @@
   &quot;keyToString&quot;: {
     &quot;Application.AnimatedSierpinskiTriangleThree.executor&quot;: &quot;Run&quot;,
     &quot;JAR Application.Serpinski_Triangle_23-1.0-SNAPSHOT.jar.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AnimatedSierpinskiTriangleThreeTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AnimatedSierpinskiTriangleThreeTest.midpoint.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.AnimatedSierpinskiTriangleThreeTest.testMaxTrianglesConstant.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AnimatedSierpinskiTriangleThreeTest.testTriangleColorMapping.executor&quot;: &quot;Run&quot;,
     &quot;Maven.AnimatedSierpinskiTriangleThree [clean].executor&quot;: &quot;Run&quot;,
     &quot;Maven.AnimatedSierpinskiTriangleThree [compile].executor&quot;: &quot;Run&quot;,
     &quot;Maven.AnimatedSierpinskiTriangleThree [package].executor&quot;: &quot;Run&quot;,
@@ -77,7 +85,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.AnimatedSierpinskiTriangleThree">
+  <component name="RunManager" selected="JUnit.AnimatedSierpinskiTriangleThreeTest">
     <configuration name="AnimatedSierpinskiTriangleThree" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="liberica-21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -89,6 +97,39 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AnimatedSierpinskiTriangleThreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AnimatedSierpinskiTriangleThree" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.serpinskitriangle.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.serpinskitriangle" />
+      <option name="MAIN_CLASS_NAME" value="org.serpinskitriangle.AnimatedSierpinskiTriangleThreeTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea -XX:+EnableDynamicAgentLoading " />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AnimatedSierpinskiTriangleThreeTest.midpoint" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AnimatedSierpinskiTriangleThree" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.serpinskitriangle.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.serpinskitriangle" />
+      <option name="MAIN_CLASS_NAME" value="org.serpinskitriangle.AnimatedSierpinskiTriangleThreeTest" />
+      <option name="METHOD_NAME" value="midpoint" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -109,15 +150,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Serpinski_Triangle_23-1.0-SNAPSHOT.jar" type="JarApplication" temporary="true">
-      <option name="JAR_PATH" value="$PROJECT_DIR$/target/Serpinski_Triangle_23-1.0-SNAPSHOT.jar" />
-      <method v="2" />
+    <configuration name="AnimatedSierpinskiTriangleThreeTest.testTriangleColorMapping" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AnimatedSierpinskiTriangleThree" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.serpinskitriangle.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.serpinskitriangle" />
+      <option name="MAIN_CLASS_NAME" value="org.serpinskitriangle.AnimatedSierpinskiTriangleThreeTest" />
+      <option name="METHOD_NAME" value="testTriangleColorMapping" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.AnimatedSierpinskiTriangleThree" />
+      <item itemvalue="JUnit.AnimatedSierpinskiTriangleThreeTest" />
+      <item itemvalue="JUnit.AnimatedSierpinskiTriangleThreeTest.midpoint" />
+      <item itemvalue="JUnit.AnimatedSierpinskiTriangleThreeTest.testMaxTrianglesConstant" />
+      <item itemvalue="JUnit.AnimatedSierpinskiTriangleThreeTest.testTriangleColorMapping" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AnimatedSierpinskiTriangleThreeTest" />
+        <item itemvalue="JUnit.AnimatedSierpinskiTriangleThreeTest.midpoint" />
         <item itemvalue="Application.AnimatedSierpinskiTriangleThree" />
+        <item itemvalue="JUnit.AnimatedSierpinskiTriangleThreeTest.testTriangleColorMapping" />
         <item itemvalue="JUnit.AnimatedSierpinskiTriangleThreeTest.testMaxTrianglesConstant" />
-        <item itemvalue="JAR Application.Serpinski_Triangle_23-1.0-SNAPSHOT.jar" />
       </list>
     </recent_temporary>
   </component>
@@ -153,7 +215,9 @@
       <workItem from="1728035346606" duration="74000" />
       <workItem from="1732014095528" duration="806000" />
       <workItem from="1732014917624" duration="22000" />
-      <workItem from="1732015038575" duration="17000" />
+      <workItem from="1732015038575" duration="1592000" />
+      <workItem from="1732016794523" duration="952000" />
+      <workItem from="1732017768435" duration="254000" />
     </task>
     <servers />
   </component>

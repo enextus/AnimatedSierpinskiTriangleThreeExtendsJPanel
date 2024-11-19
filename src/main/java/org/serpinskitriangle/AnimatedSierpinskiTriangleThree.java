@@ -5,19 +5,27 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * AnimatedSierpinskiTriangleThree class that generates and animates a Sierpinski triangle.
+ * Extends JPanel to provide custom drawing and animation features.
+ */
 public class AnimatedSierpinskiTriangleThree extends JPanel {
 
-	private static final int MAX_DEPTH = 6;
-	private static final int MAX_TRIANGLES = 8645;
-	private static final Color[] COLOR_MAP = {Color.BLUE, Color.RED, Color.GREEN, Color.WHITE, Color.YELLOW, Color.MAGENTA, Color.ORANGE};
-	private static final int DELAY = 100;
-	private static final int WIDTH = 1000;
-	private static final int HEIGHT = 1000;
-	private static final int FONT_SIZE = 22;
-	private final List<Point[]> triangles = new ArrayList<>();
-	private int triangleCount = 1;
-	private final JLabel countLabel = new JLabel("Triangles: 1");
+	public static final int MAX_DEPTH = 6; // Maximum depth of triangle recursion
+	public static final int MAX_TRIANGLES = 8645; // Maximum number of triangles to be generated
+	public static final Color[] COLOR_MAP = {Color.BLUE, Color.RED, Color.GREEN, Color.WHITE, Color.YELLOW, Color.MAGENTA, Color.ORANGE};
+	private static final int DELAY = 100; // Delay for the animation timer in milliseconds
+	private static final int WIDTH = 1000; // Width of the panel
+	private static final int HEIGHT = 1000; // Height of the panel
+	private static final int FONT_SIZE = 22; // Font size for the triangle count label
+	final List<Point[]> triangles = new ArrayList<>(); // List of triangles represented by points
+	int triangleCount = 1; // Initial triangle count
+	final JLabel countLabel = new JLabel("Triangles: 1");
 
+	/**
+	 * Main method to create the JFrame and initialize the animation.
+	 * @param args Command line arguments (not used).
+	 */
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(() -> {
 			JFrame frame = new JFrame("Animated Sierpinski Triangle Three");
@@ -30,6 +38,10 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 		});
 	}
 
+	/**
+	 * Constructor for AnimatedSierpinskiTriangleThree.
+	 * Sets up the panel, label, and layout.
+	 */
 	public AnimatedSierpinskiTriangleThree() {
 		countLabel.setFont(new Font(countLabel.getFont().getName(), Font.PLAIN, FONT_SIZE));
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -37,6 +49,9 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 		add(countLabel, BorderLayout.NORTH);
 	}
 
+	/**
+	 * Generates the initial triangle and starts the animation timer to divide triangles recursively.
+	 */
 	public void generateTriangles() {
 		Point[] points = getInitialTriangle(WIDTH, HEIGHT);
 		triangles.add(points);
@@ -44,10 +59,13 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 		timer.start();
 	}
 
+	/**
+	 * Paints the triangles onto the panel.
+	 * @param g Graphics object used for drawing.
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		int dotRadius = 4;
 
 		for (int i = 0; i < triangles.size(); i++) {
 			g.setColor(COLOR_MAP[i % COLOR_MAP.length]);
@@ -57,7 +75,13 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 		}
 	}
 
-	private void divideTriangle(Point[] points, int depth, Timer timer) {
+	/**
+	 * Divides a triangle into three smaller triangles and schedules further divisions if within depth limits.
+	 * @param points The vertices of the triangle to divide.
+	 * @param depth The current depth of recursion.
+	 * @param timer The timer controlling the animation.
+	 */
+    void divideTriangle(Point[] points, int depth, Timer timer) {
 		if (depth < MAX_DEPTH && triangleCount + 3 <= MAX_TRIANGLES) {
 			Point p1 = midpoint(points[0], points[1]);
 			Point p2 = midpoint(points[1], points[2]);
@@ -88,7 +112,13 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 		}
 	}
 
-	private static Point[] getInitialTriangle(int width, int height) {
+	/**
+	 * Generates the initial triangle for the Sierpinski triangle.
+	 * @param width The width of the panel.
+	 * @param height The height of the panel.
+	 * @return An array of Points representing the vertices of the initial triangle.
+	 */
+	public static Point[] getInitialTriangle(int width, int height) {
 		return new Point[]{
 				new Point(width / 2, 0),
 				new Point(0, height),
@@ -96,7 +126,13 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 		};
 	}
 
-	private static Point midpoint(Point p1, Point p2) {
+	/**
+	 * Calculates the midpoint between two given points.
+	 * @param p1 The first point.
+	 * @param p2 The second point.
+	 * @return A Point representing the midpoint of the two points.
+	 */
+	public static Point midpoint(Point p1, Point p2) {
 		int x = (p1.x + p2.x) / 2;
 		int y = (p1.y + p2.y) / 2;
 		return new Point(x, y);
