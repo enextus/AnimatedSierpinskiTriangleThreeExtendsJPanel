@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28135546-0887-4e9e-9140-d46afd864477" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/serpinskitriangle/AnimatedSierpinskiTriangleThree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/serpinskitriangle/AnimatedSierpinskiTriangleThreeTest (2).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/serpinskitriangle/AnimatedSierpinskiTriangleThree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/serpinskitriangle/AnimatedSierpinskiTriangleThree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/serpinskitriangle/AnimatedSierpinskiTriangleThreeTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +35,6 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="MavenRunner">
-    <option name="skipTests" value="true" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -42,36 +43,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AnimatedSierpinskiTriangleThree.executor": "Run",
-    "JAR Application.Serpinski_Triangle_23-1.0-SNAPSHOT.jar.executor": "Run",
-    "JUnit.AnimatedSierpinskiTriangleThreeTest.testMaxTrianglesConstant.executor": "Run",
-    "Maven.Serpinski_Triangle_23 [clean].executor": "Run",
-    "Maven.Serpinski_Triangle_23 [compile].executor": "Run",
-    "Maven.Serpinski_Triangle_23 [package].executor": "Run",
-    "Maven.Serpinski_Triangle_23 [test].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Projects/AnimatedSierpinskiTriangleThree",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.20524018",
-    "settings.editor.selected.configurable": "MavenSettings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AnimatedSierpinskiTriangleThree.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.Serpinski_Triangle_23-1.0-SNAPSHOT.jar.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AnimatedSierpinskiTriangleThreeTest.testMaxTrianglesConstant.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.AnimatedSierpinskiTriangleThree [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.AnimatedSierpinskiTriangleThree [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.AnimatedSierpinskiTriangleThree [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.AnimatedSierpinskiTriangleThree [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.AnimatedSierpinskiTriangleThree [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Serpinski_Triangle_23 [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Serpinski_Triangle_23 [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Serpinski_Triangle_23 [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Serpinski_Triangle_23 [test].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.preview.features.used&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Projects/AnimatedSierpinskiTriangleThree&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.20524018&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.AnimatedSierpinskiTriangleThree">
     <configuration name="AnimatedSierpinskiTriangleThree" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="liberica-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="org.serpinskitriangle.AnimatedSierpinskiTriangleThree" />
-      <module name="Serpinski_Triangle_23" />
+      <module name="AnimatedSierpinskiTriangleThree" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.serpinskitriangle.*" />
@@ -113,8 +124,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
       </set>
     </attachedChunks>
   </component>
@@ -134,7 +145,15 @@
       <workItem from="1718738808190" duration="85000" />
       <workItem from="1727959984271" duration="37000" />
       <workItem from="1727960035230" duration="22000" />
-      <workItem from="1728034355712" duration="464000" />
+      <workItem from="1728034355712" duration="626000" />
+      <workItem from="1728035035870" duration="4000" />
+      <workItem from="1728035046151" duration="69000" />
+      <workItem from="1728035117175" duration="44000" />
+      <workItem from="1728035181268" duration="142000" />
+      <workItem from="1728035346606" duration="74000" />
+      <workItem from="1732014095528" duration="806000" />
+      <workItem from="1732014917624" duration="22000" />
+      <workItem from="1732015038575" duration="17000" />
     </task>
     <servers />
   </component>

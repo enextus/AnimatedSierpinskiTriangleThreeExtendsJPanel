@@ -3,36 +3,35 @@ package org.serpinskitriangle;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AnimatedSierpinskiTriangleThree extends JPanel {
 
-	protected static final int MAX_DEPTH = 6;
-	protected static final int MAX_TRIANGLES = 8645;
-	protected static final Color[] COLOR_MAP = {Color.BLUE, Color.RED, Color.GREEN, Color.WHITE, Color.YELLOW, Color.MAGENTA, Color.ORANGE};
-	protected static final Color[] COLOR_MAP_TWO = {Color.BLACK};
-	protected static final int DELAY = 100;
-	protected static final int WIDTH = 1000;
-	protected static final int HEIGHT = 1000;
-	protected static final int FONT_SIZE = 22;
-	protected final ArrayList<Point[]> triangles = new ArrayList<>();
-	protected int triangleCount = 1;
-	protected final JLabel countLabel = new JLabel("Triangles: 1");
+	private static final int MAX_DEPTH = 6;
+	private static final int MAX_TRIANGLES = 8645;
+	private static final Color[] COLOR_MAP = {Color.BLUE, Color.RED, Color.GREEN, Color.WHITE, Color.YELLOW, Color.MAGENTA, Color.ORANGE};
+	private static final int DELAY = 100;
+	private static final int WIDTH = 1000;
+	private static final int HEIGHT = 1000;
+	private static final int FONT_SIZE = 22;
+	private final List<Point[]> triangles = new ArrayList<>();
+	private int triangleCount = 1;
+	private final JLabel countLabel = new JLabel("Triangles: 1");
 
 	public static void main(String[] args) {
-		JFrame frame = new JFrame("Animated Sierpinski Triangle Three");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(WIDTH, HEIGHT);
-		AnimatedSierpinskiTriangleThree contentPane = new AnimatedSierpinskiTriangleThree();
-		frame.setContentPane(contentPane);
-		frame.setVisible(true);
-
-		contentPane.generateTriangles();
+		SwingUtilities.invokeLater(() -> {
+			JFrame frame = new JFrame("Animated Sierpinski Triangle Three");
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frame.setSize(WIDTH, HEIGHT);
+			AnimatedSierpinskiTriangleThree contentPane = new AnimatedSierpinskiTriangleThree();
+			frame.setContentPane(contentPane);
+			frame.setVisible(true);
+			contentPane.generateTriangles();
+		});
 	}
 
 	public AnimatedSierpinskiTriangleThree() {
-		Font currentFont = countLabel.getFont();
-		Font newFont = currentFont.deriveFont((float) FONT_SIZE);
-		countLabel.setFont(newFont);
+		countLabel.setFont(new Font(countLabel.getFont().getName(), Font.PLAIN, FONT_SIZE));
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		setLayout(new BorderLayout());
 		add(countLabel, BorderLayout.NORTH);
@@ -40,25 +39,17 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 
 	public void generateTriangles() {
 		Point[] points = getInitialTriangle(WIDTH, HEIGHT);
-		triangles.add(points);  // Добавляем исходный треугольник
+		triangles.add(points);
 		Timer timer = new Timer(DELAY, e -> divideTriangle(points, 0, (Timer) e.getSource()));
 		timer.start();
 	}
 
 	@Override
-	public void paintComponent(Graphics g) {
+	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		int dotRadius = 4;
 
 		for (int i = 0; i < triangles.size(); i++) {
-			g.setColor(COLOR_MAP_TWO[i % COLOR_MAP_TWO.length]);
-
-			for (Point point : triangles.get(i)) {
-				int x = (int) point.getX() - dotRadius / 2;
-				int y = (int) point.getY() - dotRadius / 2;
-				g.fillOval(x, y, dotRadius, dotRadius);
-			}
-
 			g.setColor(COLOR_MAP[i % COLOR_MAP.length]);
 			int[] x = {(int) triangles.get(i)[0].getX(), (int) triangles.get(i)[1].getX(), (int) triangles.get(i)[2].getX()};
 			int[] y = {(int) triangles.get(i)[0].getY(), (int) triangles.get(i)[1].getY(), (int) triangles.get(i)[2].getY()};
@@ -66,7 +57,7 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 		}
 	}
 
-	protected void divideTriangle(Point[] points, int depth, Timer timer) {
+	private void divideTriangle(Point[] points, int depth, Timer timer) {
 		if (depth < MAX_DEPTH && triangleCount + 3 <= MAX_TRIANGLES) {
 			Point p1 = midpoint(points[0], points[1]);
 			Point p2 = midpoint(points[1], points[2]);
@@ -97,7 +88,7 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 		}
 	}
 
-	protected static Point[] getInitialTriangle(int width, int height) {
+	private static Point[] getInitialTriangle(int width, int height) {
 		return new Point[]{
 				new Point(width / 2, 0),
 				new Point(0, height),
@@ -105,9 +96,9 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 		};
 	}
 
-	protected static Point midpoint(Point p1, Point p2) {
-		int x = (int) ((p1.getX() + p2.getX()) / 2);
-		int y = (int) ((p1.getY() + p2.getY()) / 2);
+	private static Point midpoint(Point p1, Point p2) {
+		int x = (p1.x + p2.x) / 2;
+		int y = (p1.y + p2.y) / 2;
 		return new Point(x, y);
 	}
 }
