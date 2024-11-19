@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="28135546-0887-4e9e-9140-d46afd864477" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/serpinskitriangle/AnimatedSierpinskiTriangleThree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/serpinskitriangle/AnimatedSierpinskiTriangleThree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/serpinskitriangle/AnimatedSierpinskiTriangleThree.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +215,8 @@
       <workItem from="1732014917624" duration="22000" />
       <workItem from="1732015038575" duration="1592000" />
       <workItem from="1732016794523" duration="952000" />
-      <workItem from="1732017768435" duration="254000" />
+      <workItem from="1732017768435" duration="536000" />
+      <workItem from="1732019397409" duration="58000" />
     </task>
     <servers />
   </component>
