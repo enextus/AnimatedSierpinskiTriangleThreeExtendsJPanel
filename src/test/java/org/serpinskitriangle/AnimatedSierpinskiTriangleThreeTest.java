@@ -7,81 +7,33 @@ import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Test class for AnimatedSierpinskiTriangleThree.
- * This class contains unit tests to validate the functionality of the AnimatedSierpinskiTriangleThree class.
- */
-@ExtendWith(MockitoExtension.class)
 class AnimatedSierpinskiTriangleThreeTest {
 
-    @InjectMocks
-    private AnimatedSierpinskiTriangleThree triangle; // Объект, который будем тестировать, с автоматическим внедрением зависимостей
+    private TriangleManager manager;
 
-    @Mock
-    private Timer mockTimer; // Создаем мок объекта Timer
-
-    /**
-     * Set up method to initialize the AnimatedSierpinskiTriangleThree object before each test.
-     */
     @BeforeEach
     void setUp() {
-        triangle = new AnimatedSierpinskiTriangleThree();
+        manager = new TriangleManager(7, 13999);
     }
 
-    /**
-     * Test for the getInitialTriangle method to verify that it returns the correct initial triangle points.
-     */
     @Test
-    void getInitialTriangle() {
-        Point[] initialTriangle = AnimatedSierpinskiTriangleThree.getInitialTriangle(600, 600);
-        assertNotNull(initialTriangle);
-        assertEquals(3, initialTriangle.length);
-        assertEquals(new Point(300, 0), initialTriangle[0]);
-        assertEquals(new Point(0, 600), initialTriangle[1]);
-        assertEquals(new Point(600, 600), initialTriangle[2]);
+    void testGetInitialTriangle() {
+        Point[] triangle = manager.getInitialTriangle(800, 800);
+        assertNotNull(triangle);
+        assertEquals(new Point(400, 0), triangle[0]);
+        assertEquals(new Point(0, 800), triangle[1]);
+        assertEquals(new Point(800, 800), triangle[2]);
     }
 
-    /**
-     * Test for the midpoint method to verify that it calculates the midpoint correctly between two points.
-     */
-    @Test
-    void midpoint() {
-        Point p1 = new Point(0, 0);
-        Point p2 = new Point(10, 10);
-        Point mid = AnimatedSierpinskiTriangleThree.midpoint(p1, p2);
-        assertNotNull(mid);
-        assertEquals(new Point(5, 5), mid);
-    }
-
-    /**
-     * Test for the static midpoint method.
-     */
     @Test
     void testMidpoint() {
         Point p1 = new Point(0, 0);
-        Point p2 = new Point(4, 4);
-        Point midpoint = AnimatedSierpinskiTriangleThree.midpoint(p1, p2);
-        assertEquals(new Point(2, 2), midpoint);
+        Point p2 = new Point(10, 10);
+        Point mid = TriangleManager.midpoint(p1, p2);
+        assertEquals(new Point(5, 5), mid);
     }
 
-    /**
-     * Test for the static getInitialTriangle method.
-     */
     @Test
-    void testGetInitialTriangle() {
-        Point[] initialTriangle = AnimatedSierpinskiTriangleThree.getInitialTriangle(1000, 1000);
-        assertEquals(new Point(500, 0), initialTriangle[0]);
-        assertEquals(new Point(0, 1000), initialTriangle[1]);
-        assertEquals(new Point(1000, 1000), initialTriangle[2]);
-    }
-
-    /**
-     * Test for dividing a triangle at depth 0.
-     */
-    @Test
-    void testDivideTriangleDepthZero() {
-        Point[] points = {new Point(0, 0), new Point(4, 0), new Point(2, 4)};
-        Timer dummyTimer = new Timer(1000, e -> {}); // Создаем фиктивный таймер
         triangle.triangles.clear(); // Очистка списка треугольников
         triangle.triangles.add(points); // Добавление исходного треугольника
         triangle.divideTriangle(points, 0, dummyTimer);
