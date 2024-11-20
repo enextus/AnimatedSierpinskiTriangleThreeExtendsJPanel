@@ -2,17 +2,10 @@ package org.serpinskitriangle;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 
-import javax.swing.*;
 import java.awt.*;
+
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
-import static org.serpinskitriangle.AnimatedSierpinskiTriangleThree.MAX_DEPTH;
-import static org.serpinskitriangle.AnimatedSierpinskiTriangleThree.MAX_TRIANGLES;
 
 /**
  * Test class for AnimatedSierpinskiTriangleThree.
