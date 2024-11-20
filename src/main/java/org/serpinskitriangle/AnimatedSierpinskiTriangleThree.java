@@ -11,8 +11,8 @@ import java.util.List;
  */
 public class AnimatedSierpinskiTriangleThree extends JPanel {
 
-	public static final int MAX_DEPTH = 6; // Maximum depth of triangle recursion
-	public static final int MAX_TRIANGLES = 8645; // Maximum number of triangles to be generated
+	public static final int MAX_DEPTH = 7; // Maximum depth of triangle recursion
+	public static final int MAX_TRIANGLES = 13999; // Maximum number of triangles to be generated
 	public static final Color[] COLOR_MAP = {Color.BLUE, Color.RED, Color.GREEN, Color.WHITE, Color.YELLOW, Color.MAGENTA, Color.ORANGE};
 	private static final int DELAY = 100; // Delay for the animation timer in milliseconds
 	private static final int WIDTH = 1000; // Width of the panel
@@ -44,7 +44,7 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 	 */
 	public AnimatedSierpinskiTriangleThree() {
 		countLabel.setFont(new Font(countLabel.getFont().getName(), Font.PLAIN, FONT_SIZE));
-		setPreferredSize(new Dimension(WIDTH, HEIGHT));
+		countLabel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		setLayout(new BorderLayout());
 		add(countLabel, BorderLayout.NORTH);
 	}
