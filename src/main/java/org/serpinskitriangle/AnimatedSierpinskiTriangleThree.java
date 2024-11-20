@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * AnimatedSierpinskiTriangleThree class that generates and animates a Sierpinski triangle.
+ * AnimatedSierpinskiTriangleThree class generates and animates a Sierpinski triangle.
  * Extends JPanel to provide custom drawing and animation features.
  */
 public class AnimatedSierpinskiTriangleThree extends JPanel {
