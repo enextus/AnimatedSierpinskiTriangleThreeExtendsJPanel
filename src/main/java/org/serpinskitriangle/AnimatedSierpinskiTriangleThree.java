@@ -10,7 +10,6 @@ import java.util.List;
  * Extends JPanel to provide custom drawing and animation features.
  */
 public class AnimatedSierpinskiTriangleThree extends JPanel {
-
 	public static final int MAX_DEPTH = 6; // Maximum depth of triangle recursion
 	public static final int MAX_TRIANGLES = 8645; // Maximum number of triangles to be generated
 	public static final Color[] COLOR_MAP = {Color.BLUE, Color.RED, Color.GREEN, Color.WHITE, Color.YELLOW, Color.MAGENTA, Color.ORANGE};
