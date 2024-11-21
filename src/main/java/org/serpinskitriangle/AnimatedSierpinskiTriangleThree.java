@@ -15,7 +15,7 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 	public static final int MAX_DEPTH = 7; // Maximum recursion depth
 	public static final int MAX_TRIANGLES = 13999; // Maximum triangle count
 	public static final Color[] COLOR_MAP = {Color.BLUE, Color.RED, Color.GREEN, Color.WHITE, Color.YELLOW, Color.MAGENTA, Color.ORANGE};
-	private static final int DELAY = 100; // Delay for animation in milliseconds
+	private static final int DELAY = 1000; // Delay for animation in milliseconds
 	private static final int WIDTH = 1000; // Panel width
 	private static final int HEIGHT = 1000; // Panel height
 	private static final int FONT_SIZE = 22; // Font size for the triangle count label

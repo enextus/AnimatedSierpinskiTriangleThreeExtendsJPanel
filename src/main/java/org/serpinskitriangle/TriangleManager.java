@@ -59,5 +59,4 @@ public class TriangleManager {
         int y = (p1.y + p2.y) / 2;
         return new Point(x, y);
     }
-
 }
