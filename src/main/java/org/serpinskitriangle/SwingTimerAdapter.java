@@ -1,14 +1,12 @@
 package org.serpinskitriangle;
-
-import org.mockito.internal.util.Timer;
-
+import javax.swing.*;
 import java.awt.event.ActionListener;
 
 public class SwingTimerAdapter implements TimerInterface {
     private final Timer timer;
 
     public SwingTimerAdapter(int delay) {
-        this.timer = new Timer(delay);
+        this.timer = new Timer(delay, null);
     }
 
     @Override
@@ -23,11 +21,5 @@ public class SwingTimerAdapter implements TimerInterface {
 
     @Override
     public void addActionListener(ActionListener listener) {
-
-    }
-
-    @Override
-    public void addActionListener(ActionListener listener) {
         timer.addActionListener(listener);
     }
-}
