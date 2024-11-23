@@ -1,51 +1,100 @@
 package org.serpinskitriangle;
 
 import io.cucumber.java.en.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.awt.*;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class TriangleManagerStepDefinitions {
 
     private TriangleManager manager;
+
+    @Mock
+    private javax.swing.Timer mockTimer;
+
     private Point[] initialTriangle;
     private Point midpoint;
-    private int maxDepth = 7;
-    private int maxTriangles = 13999;
 
-    @Given("a TriangleManager with a maximum depth of {int} and maximum triangles of {int}")
-    public void setupTriangleManager(int depth, int maxTriangles) {
-        manager = new TriangleManager(depth, maxTriangles);
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+        manager = new TriangleManager(7, 13999);
     }
 
-    @When("I generate the initial triangle for a panel of width {int} and height {int}")
-    public void generateInitialTriangle(int width, int height) {
-        initialTriangle = manager.getInitialTriangle(width, height);
+    @Test
+    void testDivideTriangleBoundaryConditions() {
+        Point[] triangle = {new Point(Integer.MAX_VALUE, Integer.MAX_VALUE), new Point(0, 0), new Point(0, Integer.MAX_VALUE)};
+        List<Point[]> dividedTriangles = manager.divideTriangle(triangle);
+        assertEquals(3, dividedTriangles.size());
     }
 
-    @Then("the initial triangle should have vertices \\({int}, {int}\\), \\({int}, {int}\\), and \\({int}, {int}\\)")
-    public void verifyInitialTriangle(int x1, int y1, int x2, int y2, int x3, int y3) {
-        assertEquals(new Point(x1, y1), initialTriangle[0]);
-        assertEquals(new Point(x2, y2), initialTriangle[1]);
-        assertEquals(new Point(x3, y3), initialTriangle[2]);
+    @Test
+    void testInitialTriangleSmallPanel() {
+        Point[] triangle = manager.getInitialTriangle(10, 10);
+        assertEquals(new Point(5, 0), triangle[0]);
+        assertEquals(new Point(0, 10), triangle[1]);
+        assertEquals(new Point(10, 10), triangle[2]);
     }
 
-    @Given("two points \\({int}, {int}\\) and \\({int}, {int}\\)")
-    public void setMidpointPoints(int x1, int y1, int x2, int y2) {
-        Point p1 = new Point(x1, y1);
-        Point p2 = new Point(x2, y2);
-        midpoint = TriangleManager.midpoint(p1, p2);
+    @Test
+    void testBoundaryMaxDepthBehavior() {
+        assertTrue(manager.canDivide(13996));
+        assertFalse(manager.canDivide(13999));
     }
 
-    @When("I calculate the midpoint")
-    public void calculateMidpoint() {
-        // Midpoint is already calculated in the @Given step
+    @Test
+    void testDivideTriangleWithInvalidCoordinates() {
+        Point[] triangle = {null, new Point(4, 0), new Point(2, 4)};
+        assertThrows(NullPointerException.class, () -> manager.divideTriangle(triangle));
     }
 
-    @Then("the midpoint should be \\({int}, {int}\\)")
-    public void verifyMidpoint(int x, int y) {
-        assertEquals(new Point(x, y), midpoint);
+    @Test
+    void testTimerMultipleStarts() {
+        doNothing().when(mockTimer).start();
+        for (int i = 0; i < 10; i++) {
+            mockTimer.start();
+        }
+        verify(mockTimer, times(10)).start();
     }
 
+    @Test
+    void testDivideTriangleLargeCoordinates() {
+        Point[] triangle = {new Point(1000, 1000), new Point(4000, 1000), new Point(2500, 4000)};
+        List<Point[]> dividedTriangles = manager.divideTriangle(triangle);
+
+        assertEquals(3, dividedTriangles.size());
+    }
+
+    @Test
+    void testDivideTriangleCorrectCoordinates() {
+        Point[] triangle = {new Point(0, 0), new Point(4, 0), new Point(2, 4)};
+        List<Point[]> dividedTriangles = manager.divideTriangle(triangle);
+
+        assertArrayEquals(new Point[]{new Point(0, 0), new Point(2, 0), new Point(1, 2)}, dividedTriangles.get(0));
+        assertArrayEquals(new Point[]{new Point(2, 0), new Point(4, 0), new Point(3, 2)}, dividedTriangles.get(1));
+        assertArrayEquals(new Point[]{new Point(1, 2), new Point(3, 2), new Point(2, 4)}, dividedTriangles.get(2));
+    }
+
+    @Test
+    void testDivideTriangleDoesNotExceedMaxTriangles() {
+        Point[] triangle = {new Point(0, 0), new Point(4, 0), new Point(2, 4)};
+        assertFalse(manager.canDivide(13998)); // Превышает лимит
+    }
+
+    @Test
+    void testTimerStartWhenConditionMet() {
+        doNothing().when(mockTimer).start();
+        when(mockTimer.isRunning()).thenReturn(false);
+
+        manager.divideTriangle(new Point[]{new Point(0, 0), new Point(4, 0), new Point(2, 4)});
+
+        verify(mockTimer, times(1)).start();
+    }
 }
