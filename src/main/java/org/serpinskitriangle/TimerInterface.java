@@ -6,4 +6,5 @@ public interface TimerInterface {
     void start();
     void stop();
     void addActionListener(ActionListener listener);
+
 }

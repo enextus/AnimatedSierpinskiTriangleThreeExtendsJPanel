@@ -1,6 +1,5 @@
 package org.serpinskitriangle;
 
-import io.cucumber.java.en.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -17,10 +16,7 @@ public class AnimatedSierpinskiTriangleThreeTest {
     private TriangleManager manager;
 
     @Mock
-    private javax.swing.Timer mockTimer;
-
-    private Point[] initialTriangle;
-    private Point midpoint;
+    private TimerInterface mockTimer;
 
     @BeforeEach
     void setUp() {
@@ -28,9 +24,26 @@ public class AnimatedSierpinskiTriangleThreeTest {
         manager = new TriangleManager(7, 13999);
     }
 
+    /**
+     * Тесты для AnimatedSierpinskiTriangleThree
+     */
+    @Test
+    void testTimerStartWhenConditionMet() {
+        AnimatedSierpinskiTriangleThree triangle = new AnimatedSierpinskiTriangleThree(mockTimer);
+        triangle.generateTriangles();
+        verify(mockTimer, times(1)).start();
+    }
+
+    /**
+     * Тесты для TriangleManager
+     */
     @Test
     void testDivideTriangleBoundaryConditions() {
-        Point[] triangle = {new Point(Integer.MAX_VALUE, Integer.MAX_VALUE), new Point(0, 0), new Point(0, Integer.MAX_VALUE)};
+        Point[] triangle = {
+                new Point(Integer.MAX_VALUE, Integer.MAX_VALUE),
+                new Point(0, 0),
+                new Point(0, Integer.MAX_VALUE)
+        };
         List<Point[]> dividedTriangles = manager.divideTriangle(triangle);
         assertEquals(3, dividedTriangles.size());
     }
@@ -45,8 +58,8 @@ public class AnimatedSierpinskiTriangleThreeTest {
 
     @Test
     void testBoundaryMaxDepthBehavior() {
-        assertTrue(manager.canDivide(13996));
-        assertFalse(manager.canDivide(13999));
+        assertTrue(manager.canDivide(13996), "Ожидается, что при 13996 треугольников можно еще разделить");
+        assertFalse(manager.canDivide(13999), "Ожидается, что при 13999 треугольников нельзя больше делить");
     }
 
     @Test
@@ -56,25 +69,23 @@ public class AnimatedSierpinskiTriangleThreeTest {
     }
 
     @Test
-    void testTimerMultipleStarts() {
-        doNothing().when(mockTimer).start();
-        for (int i = 0; i < 10; i++) {
-            mockTimer.start();
-        }
-        verify(mockTimer, times(10)).start();
-    }
-
-    @Test
     void testDivideTriangleLargeCoordinates() {
-        Point[] triangle = {new Point(1000, 1000), new Point(4000, 1000), new Point(2500, 4000)};
+        Point[] triangle = {
+                new Point(1000, 1000),
+                new Point(4000, 1000),
+                new Point(2500, 4000)
+        };
         List<Point[]> dividedTriangles = manager.divideTriangle(triangle);
-
         assertEquals(3, dividedTriangles.size());
     }
 
     @Test
     void testDivideTriangleCorrectCoordinates() {
-        Point[] triangle = {new Point(0, 0), new Point(4, 0), new Point(2, 4)};
+        Point[] triangle = {
+                new Point(0, 0),
+                new Point(4, 0),
+                new Point(2, 4)
+        };
         List<Point[]> dividedTriangles = manager.divideTriangle(triangle);
 
         assertArrayEquals(new Point[]{new Point(0, 0), new Point(2, 0), new Point(1, 2)}, dividedTriangles.get(0));
@@ -84,17 +95,7 @@ public class AnimatedSierpinskiTriangleThreeTest {
 
     @Test
     void testDivideTriangleDoesNotExceedMaxTriangles() {
-        Point[] triangle = {new Point(0, 0), new Point(4, 0), new Point(2, 4)};
         assertFalse(manager.canDivide(13998)); // Превышает лимит
     }
 
-    @Test
-    void testTimerStartWhenConditionMet() {
-        doNothing().when(mockTimer).start();
-        when(mockTimer.isRunning()).thenReturn(false);
-
-        manager.divideTriangle(new Point[]{new Point(0, 0), new Point(4, 0), new Point(2, 4)});
-
-        verify(mockTimer, times(1)).start();
-    }
 }

@@ -6,8 +6,8 @@ import java.util.List;
 
 public class TriangleManager {
 
-    private final int maxDepth;
     private final int maxTriangles;
+    private final int maxDepth;
 
     public TriangleManager(int maxDepth, int maxTriangles) {
         this.maxDepth = maxDepth;
@@ -35,6 +35,9 @@ public class TriangleManager {
     }
 
     public boolean canDivide(int currentTriangles) {
+        if (currentTriangles < 0) {
+            throw new IllegalArgumentException("Количество треугольников не может быть отрицательным");
+        }
         return currentTriangles + 3 <= maxTriangles;
     }
 
@@ -49,4 +52,5 @@ public class TriangleManager {
     private Point midpoint(Point p1, Point p2) {
         return new Point((p1.x + p2.x) / 2, (p1.y + p2.y) / 2);
     }
+
 }

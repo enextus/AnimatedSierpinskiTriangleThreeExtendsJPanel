@@ -23,3 +23,5 @@ public class SwingTimerAdapter implements TimerInterface {
     public void addActionListener(ActionListener listener) {
         timer.addActionListener(listener);
     }
+
+}
