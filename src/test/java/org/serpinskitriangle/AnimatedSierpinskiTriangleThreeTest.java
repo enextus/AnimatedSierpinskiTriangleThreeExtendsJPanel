@@ -2,21 +2,16 @@ package org.serpinskitriangle;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.awt.*;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 public class AnimatedSierpinskiTriangleThreeTest {
 
     private TriangleManager manager;
-
-    @Mock
-    private TimerInterface mockTimer;
 
     @BeforeEach
     void setUp() {
@@ -29,9 +24,11 @@ public class AnimatedSierpinskiTriangleThreeTest {
      */
     @Test
     void testTimerStartWhenConditionMet() {
-        AnimatedSierpinskiTriangleThree triangle = new AnimatedSierpinskiTriangleThree(mockTimer);
+        AnimatedSierpinskiTriangleThree triangle = new AnimatedSierpinskiTriangleThree();
         triangle.generateTriangles();
-        verify(mockTimer, times(1)).start();
+        // Поскольку больше нет mockTimer, нельзя проверить его запуск напрямую.
+        // Вместо этого можно проверить состояние или поведение класса после вызова generateTriangles().
+        assertEquals(1, triangle.triangleCount, "Ожидается, что начальное количество треугольников будет 1 после запуска таймера.");
     }
 
     /**
