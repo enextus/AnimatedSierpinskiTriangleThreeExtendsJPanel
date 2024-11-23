@@ -31,7 +31,7 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 			JFrame frame = new JFrame("Animated Sierpinski Triangle Three");
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setSize(WIDTH, HEIGHT);
-			Timer timer = new Timer(DELAY, null);
+			TimerInterface timer = new SwingTimerAdapter(100); // Use the adapter here
 			AnimatedSierpinskiTriangleThree contentPane = new AnimatedSierpinskiTriangleThree(timer);
 			frame.setContentPane(contentPane);
 			frame.setVisible(true);
@@ -43,7 +43,7 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 	 * Constructor for AnimatedSierpinskiTriangleThree.
 	 * Sets up the panel, label, and layout.
 	 */
-	public AnimatedSierpinskiTriangleThree(Timer timer) {
+	public AnimatedSierpinskiTriangleThree(TimerInterface timer) {
 		this.timer = timer;
 		countLabel.setFont(new Font(countLabel.getFont().getName(), Font.PLAIN, FONT_SIZE));
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -83,7 +83,7 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 	 * @param depth The current depth of recursion.
 	 * @param timer The timer controlling the animation.
 	 */
-	void divideTriangle(Point[] points, int depth, Timer timer) {
+	void divideTriangle(Point[] points, int depth, TimerInterface timer) {
 		if (depth < MAX_DEPTH && triangleCount + 3 <= MAX_TRIANGLES) {
 			Point p1 = midpoint(points[0], points[1]);
 			Point p2 = midpoint(points[1], points[2]);
