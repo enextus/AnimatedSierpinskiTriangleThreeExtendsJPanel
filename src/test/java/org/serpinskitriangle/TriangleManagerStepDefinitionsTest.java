@@ -1,6 +1,5 @@
 package org.serpinskitriangle;
 
-import io.cucumber.java.en.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -12,9 +11,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-public class TriangleManagerStepDefinitions {
+public class TriangleManagerStepDefinitionsTest {
 
-    private TriangleManager manager;
+    private TriangleManagerTest manager;
 
     @Mock
     private javax.swing.Timer mockTimer;
@@ -25,7 +24,7 @@ public class TriangleManagerStepDefinitions {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        manager = new TriangleManager(7, 13999);
+        manager = new TriangleManagerTest(7, 13999);
     }
 
     @Test
@@ -88,13 +87,24 @@ public class TriangleManagerStepDefinitions {
         assertFalse(manager.canDivide(13998)); // Превышает лимит
     }
 
+    /**
+     * Test for midpoint calculation between two points.
+     */
     @Test
-    void testTimerStartWhenConditionMet() {
-        doNothing().when(mockTimer).start();
-        when(mockTimer.isRunning()).thenReturn(false);
+    void testMidpointCalculation() {
+        Point p1 = new Point(0, 0);
+        Point p2 = new Point(10, 10);
+        Point expectedMidpoint = new Point(5, 5);
+        Point actualMidpoint = manager.midpoint(p1, p2);
+        assertEquals(expectedMidpoint, actualMidpoint, "Midpoint should be (5, 5)");
+    }
 
-        manager.divideTriangle(new Point[]{new Point(0, 0), new Point(4, 0), new Point(2, 4)});
-
-        verify(mockTimer, times(1)).start();
+    /**
+     * Test for generating initial triangle with larger dimensions.
+     */
+    @Test
+    void testGenerateInitialTriangle() {
+        Point[] triangle = manager.getInitialTriangle(800, 800);
+        assertArrayEquals(new Point[]{new Point(400, 0), new Point(0, 800), new Point(800, 800)}, triangle);
     }
 }

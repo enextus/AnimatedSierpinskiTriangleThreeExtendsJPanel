@@ -4,12 +4,12 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TriangleManager {
+public class TriangleManagerTest {
 
     private final int maxTriangles;
     private final int maxDepth;
 
-    public TriangleManager(int maxDepth, int maxTriangles) {
+    public TriangleManagerTest(int maxDepth, int maxTriangles) {
         this.maxDepth = maxDepth;
         this.maxTriangles = maxTriangles;
     }
@@ -49,7 +49,14 @@ public class TriangleManager {
         };
     }
 
-    private Point midpoint(Point p1, Point p2) {
+    /**
+     * Public method to calculate midpoint between two points.
+     *
+     * @param p1 The first point.
+     * @param p2 The second point.
+     * @return The midpoint between p1 and p2.
+     */
+    public Point midpoint(Point p1, Point p2) {
         return new Point((p1.x + p2.x) / 2, (p1.y + p2.y) / 2);
     }
 

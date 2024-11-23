@@ -11,12 +11,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AnimatedSierpinskiTriangleThreeTest {
 
-    private TriangleManager manager;
+    private TriangleManagerTest manager;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        manager = new TriangleManager(7, 13999);
+        manager = new TriangleManagerTest(7, 13999);
     }
 
     /**
