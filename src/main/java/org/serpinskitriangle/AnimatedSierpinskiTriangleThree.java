@@ -10,6 +10,7 @@ import java.util.List;
  * Extends JPanel to provide custom drawing and animation features.
  */
 public class AnimatedSierpinskiTriangleThree extends JPanel {
+	private final Timer timer;
 	public static final int MAX_DEPTH = 6; // Maximum depth of triangle recursion
 	public static final int MAX_TRIANGLES = 8645; // Maximum number of triangles to be generated
 	public static final Color[] COLOR_MAP = {Color.BLUE, Color.RED, Color.GREEN, Color.WHITE, Color.YELLOW, Color.MAGENTA, Color.ORANGE};
@@ -30,7 +31,8 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 			JFrame frame = new JFrame("Animated Sierpinski Triangle Three");
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setSize(WIDTH, HEIGHT);
-			AnimatedSierpinskiTriangleThree contentPane = new AnimatedSierpinskiTriangleThree();
+			Timer timer = new Timer(DELAY, null);
+			AnimatedSierpinskiTriangleThree contentPane = new AnimatedSierpinskiTriangleThree(timer);
 			frame.setContentPane(contentPane);
 			frame.setVisible(true);
 			contentPane.generateTriangles();
@@ -41,7 +43,8 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 	 * Constructor for AnimatedSierpinskiTriangleThree.
 	 * Sets up the panel, label, and layout.
 	 */
-	public AnimatedSierpinskiTriangleThree() {
+	public AnimatedSierpinskiTriangleThree(Timer timer) {
+		this.timer = timer;
 		countLabel.setFont(new Font(countLabel.getFont().getName(), Font.PLAIN, FONT_SIZE));
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		setLayout(new BorderLayout());
@@ -54,7 +57,7 @@ public class AnimatedSierpinskiTriangleThree extends JPanel {
 	public void generateTriangles() {
 		Point[] points = getInitialTriangle(WIDTH, HEIGHT);
 		triangles.add(points);
-		Timer timer = new Timer(DELAY, e -> divideTriangle(points, 0, (Timer) e.getSource()));
+		timer.addActionListener(e -> divideTriangle(points, 0, timer));
 		timer.start();
 	}
 

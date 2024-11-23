@@ -12,7 +12,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-public class TriangleManagerStepDefinitions {
+public class AnimatedSierpinskiTriangleThreeTest {
 
     private TriangleManager manager;
 
